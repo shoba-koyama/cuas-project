@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beauty Salon Cuas｜横浜市青葉区のネイル・エステサロン</title>
+  <meta name="description" content="Beauty Salon Cuas（キュアス）は横浜市青葉区のプライベートサロン。ネイル・エステ・パーソナルカラー診断。藤が丘駅徒歩2分。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold:#C6A664; /* elegant gold */
+      --beige:#F7F3EC; /* soft background */
+      --ink:#2B2B2B;  /* body text */
+      --muted:#7A7A7A;
+      --white:#fff;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:20px;
+      --max:1000px;
+    }
+    html,body{margin:0;padding:0;color:var(--ink);background:
+      radial-gradient(#e5e1da 1px,transparent 1px) 0 0/16px 16px,
+      var(--beige);
+      font-family:'Noto Sans JP',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Apple Color Emoji','Segoe UI Emoji';
+      line-height:1.7;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--max);margin:auto;}
+    header{position:sticky;top:0;background:rgba(247,243,236,.8);backdrop-filter:blur(8px);z-index:10;border-bottom:1px solid #e7dfd0}
+    .head{max-width:var(--max);margin:auto;display:flex;align-items:center;gap:16px;padding:12px 24px}
+    .logo{display:flex;align-items:center;gap:10px;font-family:'Noto Serif JP',serif;font-weight:600}
+    .logo-mark{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#fefefe, #f5eddc);box-shadow:inset 0 0 0 2px var(--gold), 0 3px 10px rgba(0,0,0,.06);display:grid;place-items:center;overflow:hidden}
+    .logo-mark img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+    .logo-mark svg{width:26px;height:26px;fill:var(--gold)}
+    .spacer{flex:1}
+    .cta-row{display:flex;align-items:center;gap:12px}
+
+        /* モバイルのみ：logo-mark の overflow を解除、幅を80pxに、Cuas 文言を非表示 */
+    @media (max-width:600px){
+      .logo-mark{
+        width:80px;
+        height:42px;
+      }
+      .logo-mark img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+      }
+      .logo span{display:none} /* "Cuas" をモバイルで非表示にする */
+    }
+
+     /* ハンバーガーメニュー関連 */
+    .menu-toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:16px 12px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      background:#fff;
+      cursor:pointer;
+      font-weight:600;
+    }
+        /* ハンバーガーメニュー モバイル：テキストを非表示にしてアイコンのみ表示 */
+    @media (max-width:600px){
+      .menu-toggle{
+        font-size:0;        /* 内部テキストを視覚的に消す */
+        padding:10px;       /* アイコンに合わせて余白調整 */
+        gap:0rem;         /* アイコンと余白の調整 */
+      }
+      .menu-toggle svg{
+        width:20px;
+        height:20px;
+        display:inline-block;
+        vertical-align:middle;
+      }
+    }
+    .menu-toggle svg{width:18px;height:18px}
+
+    .header-menu{
+      position:absolute;
+      left:0; right:0;
+      top:100%;
+      margin:12px auto 0;
+      max-width:var(--max);
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 12px 30px rgba(0,0,0,.12);
+      padding:12px;
+      display:none;
+      z-index:20;
+    }
+    .header-menu.open{display:block}
+    .header-menu .grid-cta{margin:0;gap:8px}
+    @media (min-width:860px){
+      .header-menu .grid-cta{grid-template-columns:repeat(3,1fr)}
+      .header-menu{left:24px;right:24px}
+    }
+        /* ヘッダーメニュー モバイルで電話・LINEボタンの文字サイズを小さくする */
+    @media (max-width:600px){
+      .btn, .btn1{
+        font-size:0.8rem;      /* 文字を小さく */
+        padding:8px 10px;       /* ボタンサイズも少し縮める */
+      }
+      .btn svg, .btn1 svg{
+        width:16px;
+        height:16px;
+      }
+    }
+
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--gold);color:#725f2a;background:#fff;box-shadow:var(--shadow);font-weight:600}
+    .btn1{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--gold);color:white;background:#30DF30;box-shadow:var(--shadow);font-weight:600}
+
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+    .hero{display:grid;gap:20px;padding:28px 24px 8px}
+    /* Top3 を上に大きく、下段に Top2 / Top1 を左右並びにする */
+    .hero-grid{display:grid;gap:12px}
+    .hero-grid .large{min-height:260px;overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow);background:#fff}
+    .hero-grid .small-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .hero-grid .small-row .hero-card{min-height:140px}
+    .hero-card{overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow);background:#fff}
+    .hero-card img{object-fit:cover;height:100%;width:100%}
+    .title{font-family:'Noto Serif JP',serif;font-size:clamp(26px,5vw,40px);margin:10px 0 6px}
+    .subtitle{color:var(--muted)}
+
+    .section{margin:40px auto;padding:24px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .section h2{font-family:'Noto Serif JP',serif;margin:0 0 14px;font-size:clamp(20px,3.4vw,28px)}
+    .lead{margin:8px 0;color:#45413a}
+
+    .grid-cta{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px}
+    .link-tile{display:flex;align-items:center;justify-content:center;gap:10px;height:48px;border-radius:12px;border:1px solid #e5d8bf;background:linear-gradient(#fff,#faf6ef);box-shadow:0 2px 0 #e5d8bf; font-weight:600}
+    .link-tile:hover{filter:brightness(1.03)}
+
+    .ig-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;justify-content:center}
+    .ig-btn{padding:10px 14px;border-radius:999px;border:1px solid #ddd;background:#fff;display:inline-flex;align-items:center;gap:8px;box-shadow:var(--shadow)}
+    /* Instagram アイコンを枠なしで中央に表示 */
+    .ig-link{display:inline-block;padding:0;border:0;background:transparent}
+    .ig-link:focus{outline:none}
+    .ig-icon{width:56px;height:56px;object-fit:cover;border-radius:0;display:block;margin:0}
+
+    .shop{display:grid;grid-template-columns:1fr;gap:10px}
+    .kv{color:#777}
+
+    .map{overflow:hidden;border-radius:16px;box-shadow:var(--shadow)}
+
+    footer{margin:40px 0 60px;color:#7a6c4b;text-align:center}
+
+    /* menu styles: 縦並びで見やすくする */
+    .menu-list{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px;max-width:760px;margin-left:auto;margin-right:auto}
+    .menu-card{background:#fff;padding:16px;border-radius:12px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 8px 18px rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:8px}
+    .menu-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .menu-card h3{margin:0;font-size:1.05rem;color:var(--ink);font-weight:700}
+    .price{font-weight:800;color:var(--gold);font-size:1rem;white-space:nowrap}
+    .menu-desc{margin:0;color:var(--muted);line-height:1.6;font-size:0.98rem}
+    .menu-note{font-size:0.92rem;color:#8a7f66;margin-top:6px}
+    #menu h2{margin-bottom:10px}
+
+    /* 注意事項スタイル */
+    .notice{background:#fff7ea;border:1px solid rgba(198,166,100,0.18);padding:18px;border-radius:12px;max-width:900px;margin:18px auto 24px;color:var(--ink)}
+    .notice h2{margin-top:0;font-size:1.05rem}
+    .notice ul{margin:8px 0 0;padding-left:18px;color:#5a5043}
+    .notice li{margin:8px 0;line-height:1.6;font-size:0.95rem}
+    @media (max-width:600px){
+      .menu-card{padding:14px}
+      .price{font-size:0.98rem}
+    }
+    /* ヘッダー下の大見出し（Nail menu） */
+    .page-title{display:flex;justify-content:center;align-items:center;padding:18px 12px 8px;background:transparent}
+    .page-title h1{margin:0;font-family:'Noto Serif JP',serif;font-size:clamp(28px,6vw,48px);color:var(--ink);font-weight:700}
+    @media (max-width:600px){ .page-title{padding:14px 8px} .page-title h1{font-size:clamp(22px,8vw,34px)} }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="head">
+      <a class="logo" href="#top" aria-label="Beauty Salon Cuas">
+        <img class="logo-mark" src="image/logo.jpg" alt="Beauty Salon Cuas ロゴ">
+        <span>Cuas</span>
+      </a>
+      <div class="spacer"></div>
+      <!-- <div class=""> -->
+        <a class="btn" href="tel:045-530-4891" aria-label="電話予約 045-530-4891">☎ 045-530-4891</a>
+        <!-- <a class="btn primary" href="#reserve" aria-label="Web予約へ">Web予約</a> -->
+        <a class="btn1" href="https://line.me/R/ti/p/@chk7634a" target="_blank" rel="noopener">LINE 友だち追加</a>
+        <!-- ハンバーガーメニューを CTA 行の右に配置 -->
+        <button id="headerMenuToggle" class="menu-toggle" aria-expanded="false" aria-controls="headerMenu" aria-label="メニューを開く">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          MENU
+        </button>
+
+       <!-- </div> -->
+     </div>
+     <!-- トグル表示されるヘッダーメニュー -->
+     <nav id="headerMenu" class="header-menu" aria-hidden="true">
+       <div class="grid-cta" role="menu" aria-label="トップメニュー">
+         <a class="link-tile" href="index.html" role="menuitem">TOP　メニュー</a>
+         <a class="link-tile" href="Nail.html" role="menuitem">ネイル　メニュー</a>
+         <a class="link-tile" href="esthe-menu.html" role="menuitem">エステ　メニュー</a>
+         <a class="link-tile" href="permanent-jewelry.html" role="menuitem">パーマネントジュエリー　メニュー</a>
+         <a class="link-tile" href="meso.html" role="menuitem">メソスキン　メニュー</a>
+         <a class="link-tile" href="photo-facial.html" role="menuitem">フォトフェイシャル　メニュー</a>
+         <a class="link-tile" href="clay-mask.html" role="menuitem">クレイマスク　メニュー</a>
+         <a class="link-tile" href="service.html" role="menuitem">当店ご利用について</a>
+
+       </div>
+     </nav>
+   </header>
+
+  <!-- 追加: ヘッダー下に大きなタイトル -->
+  <div class="page-title" role="region" aria-label="ページタイトル">
+    <h1>clay mask menu</h1>
+  </div>
+
+  <main class="wrap" id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <!-- ギャラリーを上に移動 -->
+      <div class="hero-grid" aria-label="ギャラリー">
+        <figure class="large">
+          <img src="image/meso.jpg" alt="クラウンの装飾と店内イメージ" />
+        </figure>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- 追加: クレイマスク 説明 -->
+    <section class="section" id="permanent-jewelry">
+      <h2>– MDNA SKIN –</h2>
+      <p>毛穴・くすみ・乾燥・しみ・敏感肌まで多角的にアプローチする結果重視の集中トリートメント。</p>
+
+      <p>クレイマスクが古い角質や毛穴奥の汚れを磁力で吸着し、摩擦レスで優しく除去☆ 不要な汚れだけを取り除きながら弾力ケア成分が角層深くに働きかけ、キメ成分が肌表面を整えます。肌の内側からみずみずしいハリと透明感を呼び覚まし、くすみやザラつきのない滑らかな質感へ導きます。</p>
+
+      <p>さらに、クレイマスク後の肌に残る美容ミネラルを逃さず最先端のイオン導入で有効成分を角層深部まで届けます。日々のスキンケアでは届きにくい部分にアプローチし、毛穴ケア・乾燥対策・美白・エイジングケアまでを一度で叶える！</p>
+
+      <p>磁力で“落とし”、導入で“満たす”。施術直後から実感できるハリ・透明感、メイクノリの違いをぜひ体感してください。</p>
+
+      <h2>施術の流れ</h2>
+      <ol>
+        <li><strong>クレンジング</strong><br>お肌を優しく洗浄し整えます。</li>
+        <li><strong>クレイマスク塗布</strong><br>古い角質や毛穴の汚れを吸着しながら汚れを浮かせます。</li>
+        <li><strong>マグネティックフォースによる吸引</strong><br>磁力を用いたヘッドで不要なものを引き寄せて取り除き、肌に必要な美容成分を残します。</li>
+        <li><strong>ディープデルマ導入</strong><br>4種類の異なるパルスを組み合わせたシステムで美容成分を効率的に浸透。肌状態に合わせて最適な成分を届け、潤いとハリを補います。</li>
+        <li><strong>仕上げケア</strong><br>肌の状態を整え、潤いと透明感のある肌に仕上げます。</li>
+      </ol>
+    </section>
+
+    <!-- 初回料金（セクション分離） -->
+    <section class="section" id="pricing">
+      <h2>初回料金（カウンセリング込）</h2>
+      <div class="menu-list">
+        <article class="menu-card">
+          <div class="menu-head">
+            <h3>クレイマスク</h3>
+            <div class="price">￥6,000</div>
+          </div>
+          <p class="menu-desc">古い角質・毛穴汚れを磁力でやさしく除去し、その後の導入で有効成分をしっかり浸透させます。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 注意事項（セクション分離） -->
+    <section class="section notice" id="notice">
+      <h2>注意事項</h2>
+      <ul>
+        <li>施術後は肌が敏感になりやすいため、強い摩擦や紫外線を避けてください。</li>
+        <li>稀に肌に赤みや軽いほてりが出る場合がありますが、通常1日〜2日で落ち着きます。</li>
+        <li>施術後24時間は刺激の強い化粧品やスクラブなどの使用を控えてください。</li>
+        <li>施術当日は入浴やサウナなどで過度な発汗を避け、肌を保護してください。</li>
+        <li>妊娠中・授乳中、または肌に炎症や疾患がある場合は事前にスタッフまでご相談ください。</li>
+      </ul>
+    </section>
+    <footer>
+      <small>© <span id="y"></span> Beauty Salon Cuas. All rights reserved.</small>
+    </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+   <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // ヘッダーメニューのトグル処理
+    (function(){
+      const btn = document.getElementById('headerMenuToggle');
+      const menu = document.getElementById('headerMenu');
+      if(!btn || !menu) return;
+      function openMenu(){
+        btn.setAttribute('aria-expanded','true');
+        menu.classList.add('open');
+        menu.setAttribute('aria-hidden','false');
+      }
+      function closeMenu(){
+        btn.setAttribute('aria-expanded','false');
+        menu.classList.remove('open');
+        menu.setAttribute('aria-hidden','true');
+      }
+      btn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        expanded ? closeMenu() : openMenu();
+      });
+      // メニュー外クリックで閉じる
+      document.addEventListener('click', (e)=>{
+        if(!menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
+      });
+      // ESC で閉じる
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape') closeMenu();
+      });
+    })();
+  </script>
+
+
+</html></body></body>
+</html>

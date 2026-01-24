@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beauty Salon Cuas｜横浜市青葉区のネイル・エステサロン</title>
+  <meta name="description" content="Beauty Salon Cuas（キュアス）は横浜市青葉区のプライベートサロン。ネイル・エステ・パーソナルカラー診断。藤が丘駅徒歩2分。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold:#C6A664; /* elegant gold */
+      --beige:#F7F3EC; /* soft background */
+      --ink:#2B2B2B;  /* body text */
+      --muted:#7A7A7A;
+      --white:#fff;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:20px;
+      --max:1000px;
+    }
+    html,body{margin:0;padding:0;color:var(--ink);background:
+      radial-gradient(#e5e1da 1px,transparent 1px) 0 0/16px 16px,
+      var(--beige);
+      font-family:'Noto Sans JP',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Apple Color Emoji','Segoe UI Emoji';
+      line-height:1.7;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--max);margin:auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(247,243,236,.8);backdrop-filter:blur(8px);z-index:10;border-bottom:1px solid #e7dfd0}
+    .head{max-width:var(--max);margin:auto;display:flex;align-items:center;gap:16px;padding:12px 24px}
+    .logo{display:flex;align-items:center;gap:10px;font-family:'Noto Serif JP',serif;font-weight:600}
+    .logo-mark{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#fefefe, #f5eddc);box-shadow:inset 0 0 0 2px var(--gold), 0 3px 10px rgba(0,0,0,.06);display:grid;place-items:center;overflow:hidden}
+    .logo-mark img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+    .logo-mark svg{width:26px;height:26px;fill:var(--gold)}
+    .spacer{flex:1}
+    .cta-row{display:flex;align-items:center;gap:12px}
+
+        /* モバイルのみ：logo-mark の overflow を解除、幅を80pxに、Cuas 文言を非表示 */
+    @media (max-width:600px){
+      .logo-mark{
+        width:80px;
+        height:42px;
+      }
+      .logo-mark img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+      }
+      .logo span{display:none} /* "Cuas" をモバイルで非表示にする */
+    }
+
+    /* ハンバーガーメニュー関連 */
+    .menu-toggle{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:16px 12px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      background:#fff;
+      cursor:pointer;
+      font-weight:600;
+    }
+        /* ハンバーガーメニュー モバイル：テキストを非表示にしてアイコンのみ表示 */
+    @media (max-width:600px){
+      .menu-toggle{
+        font-size:0;        /* 内部テキストを視覚的に消す */
+        padding:10px;       /* アイコンに合わせて余白調整 */
+        gap:0rem;         /* アイコンと余白の調整 */
+      }
+      .menu-toggle svg{
+        width:20px;
+        height:20px;
+        display:inline-block;
+        vertical-align:middle;
+      }
+    }
+    .menu-toggle svg{width:18px;height:18px}
+
+    .header-menu{
+      position:absolute;
+      left:0; right:0;
+      top:100%;
+      margin:12px auto 0;
+      max-width:var(--max);
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 12px 30px rgba(0,0,0,.12);
+      padding:12px;
+      display:none;
+      z-index:20;
+    }
+    .header-menu.open{display:block}
+    .header-menu .grid-cta{margin:0;gap:8px}
+    @media (min-width:860px){
+      .header-menu .grid-cta{grid-template-columns:repeat(3,1fr)}
+      .header-menu{left:24px;right:24px}
+    }
+        /* ヘッダーメニュー モバイルで電話・LINEボタンの文字サイズを小さくする */
+    @media (max-width:600px){
+      .btn, .btn1{
+        font-size:0.8rem;      /* 文字を小さく */
+        padding:8px 10px;       /* ボタンサイズも少し縮める */
+      }
+      .btn svg, .btn1 svg{
+        width:16px;
+        height:16px;
+      }
+    }
+
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--gold);color:#725f2a;background:#fff;box-shadow:var(--shadow);font-weight:600}
+    .btn1{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--gold);color:white;background:#30DF30;box-shadow:var(--shadow);font-weight:600}
+
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+    .hero{display:grid;gap:20px;padding:28px 24px 8px}
+    /* Top3 を上に大きく、下段に Top2 / Top1 を左右並びにする */
+    .hero-grid{display:grid;gap:8px} /* 大画像と小画像行の縦の間隔を小さく */
+    .hero-grid .large{margin:0;padding:0;overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow);background:#fff}
+    .hero-grid .large img{display:block;width:100%;height:250px;object-fit:cover} /* 縦サイズはここで調整 */
+    /* モバイルで大画像の高さを小さくする */
+    @media (max-width:600px){
+      .hero-grid .large img{height:150px}
+
+    }
+    .hero-grid .small-row{display:grid;grid-template-columns:1fr 1fr;gap:6px} /* 小画像同士の間隔だけ小さく */
+    .hero-grid .small-row .hero-card{margin:0;padding:0;min-height:220px;overflow:hidden;border-radius:var(--radius);background:#fff}
+      @media (max-width:600px){
+    .hero-grid .small-row .hero-card{min-height:150px}
+    }
+    .hero-card img{display:block;width:100%;height:220px;object-fit:cover}
+    figure{margin:0} /* ブラウザ標準の余白をリセット */
+    @media (max-width:600px){
+    .hero-card img{height:150px}
+    }
+    .title{font-family:'Noto Serif JP',serif;font-size:clamp(26px,5vw,40px);margin:10px 0 6px}
+    .subtitle{color:var(--muted)}
+
+    .section{margin:40px auto;padding:24px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .section h2{font-family:'Noto Serif JP',serif;margin:0 0 14px;font-size:clamp(20px,3.4vw,28px)}
+    .lead{margin:8px 0;color:#45413a}
+
+    .grid-cta{display:grid;grid-template-columns:1fr;gap:12px;margin-top:18px}
+    .link-tile{display:flex;align-items:center;justify-content:center;gap:10px;height:48px;border-radius:12px;border:1px solid #e5d8bf;background:linear-gradient(#fff,#faf6ef);box-shadow:0 2px 0 #e5d8bf; font-weight:600}
+    .link-tile:hover{filter:brightness(1.03)}
+
+    .ig-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px;justify-content:center;align-items:center}
+    .ig-btn{padding:10px 16px;border-radius:999px;border:1px solid #ddd;background:#fff;display:inline-flex;align-items:center;gap:10px;box-shadow:var(--shadow)}
+    .ig-icon{width:40px;height:40px;object-fit:cover;flex:0 0 auto;margin-right:12px;display:inline-block;border-radius:8px}
+
+    .shop{display:grid;grid-template-columns:1fr;gap:10px}
+    .kv{color:#777}
+
+    .map{overflow:hidden;border-radius:16px;box-shadow:var(--shadow)}
+
+    footer{margin:40px 0 60px;color:#7a6c4b;text-align:center}
+
+    @media (min-width:860px){
+      /* PC: 左に大きな画像、右に上下で小画像 */
+      .hero{grid-template-columns:1.2fr .8fr;align-items:center}
+      .grid-cta{grid-template-columns:repeat(2,1fr)}
+      .shop{grid-template-columns:1fr 1fr}
+    }
+    /* SP: Instagram ボタンを2列にする */
+    @media (max-width:859px){
+      .ig-row{display:grid;gap:10px;margin-top:14px;justify-items:stretch;align-items:center}
+      .ig-btn{justify-content:center;padding:10px;width:100%}
+      .ig-icon{width:48px;height:48px;margin-right:10px;border-radius:10px}
+    }
+
+    /* Instagram ボタン：モバイルで表示文言を短縮する */
+    .ig-label.short{display:none}
+    @media (max-width:600px){
+      .ig-label.full{display:none}
+      .ig-label.short{display:inline}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="head">
+      <a class="logo" href="#top" aria-label="Beauty Salon Cuas">
+        <img class="logo-mark" src="image/logo.jpg" alt="Beauty Salon Cuas ロゴ">
+        <span>Cuas</span>
+      </a>
+      <div class="spacer"></div>
+      <!-- <div class=""> -->
+        <a class="btn" href="tel:045-530-4891" aria-label="電話予約 045-530-4891">☎ 045-530-4891</a>
+        <!-- <a class="btn primary" href="#reserve" aria-label="Web予約へ">Web予約</a> -->
+        <a class="btn1" href="https://line.me/R/ti/p/@chk7634a" target="_blank" rel="noopener">LINE 友だち追加</a>
+        <!-- ハンバーガーメニューを CTA 行の右に配置 -->
+        <button id="headerMenuToggle" class="menu-toggle" aria-expanded="false" aria-controls="headerMenu" aria-label="メニューを開く">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+          MENU
+        </button>
+
+       <!-- </div> -->
+     </div>
+     <!-- トグル表示されるヘッダーメニュー -->
+     <nav id="headerMenu" class="header-menu" aria-hidden="true">
+       <div class="grid-cta" role="menu" aria-label="トップメニュー">
+         <a class="link-tile" href="index.html" role="menuitem">TOP　メニュー</a>
+         <a class="link-tile" href="Nail.html" role="menuitem">ネイル　メニュー</a>
+         <a class="link-tile" href="esthe-menu.html" role="menuitem">エステ　メニュー</a>
+         <a class="link-tile" href="permanent-jewelry.html" role="menuitem">パーマネントジュエリー　メニュー</a>
+         <a class="link-tile" href="meso.html" role="menuitem">メソスキン　メニュー</a>
+         <a class="link-tile" href="photo-facial.html" role="menuitem">フォトフェイシャル　メニュー</a>
+         <a class="link-tile" href="clay-mask.html" role="menuitem">クレイマスク　メニュー</a>
+         <a class="link-tile" href="service.html" role="menuitem">当店ご利用について</a>
+       </div>
+     </nav>
+   </header>
+
+  <main class="wrap" id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <!-- ギャラリーを上に移動 -->
+      <div class="hero-grid" aria-label="ギャラリー">
+        <figure class="large">
+          <img src="image/top3.jpg" alt="クラウンの装飾と店内イメージ" />
+        </figure>
+        <div class="small-row" aria-hidden="false">
+          <figure class="hero-card"><img src="image/top2.jpg" alt="フェイシャルエステの様子"/></figure>
+          <figure class="hero-card"><img src="image/top1.jpg" alt="ネイル施術の様子"/></figure>
+        </div>
+
+      </div>
+      <div>
+        <h1 class="title">Beauty Salon Cuas</h1>
+        <p class="subtitle">横浜市青葉区のネイル・エステサロン（藤が丘駅 徒歩2分）</p>
+        <p class="lead">結果にしっかりこだわった『 自分が通いたい 』サロン💎<br>
+
+                    お仕事帰りにも嬉しい２２時まで営業♪<br>
+
+                    丁寧なカウンセリングでサロンが苦手な方や<br>
+                    サロンが初めてな方にもオススメ⭐︎<br>
+
+                    一人一人のお客様と向き合い、悩みに合わせた施術<br>
+                    その場限りではなく、末長くお付き合いできる<br>
+                    プライベートな空間でリラックスしていただけるよう心がけております。<br>
+
+
+                    お電話が繋がらない場合は時間を空けて再度ご連絡いただくか<br>
+                    LINEでお問い合わせお電話折り返し希望のご連絡をいただけると幸いです。<br>
+                    LINEのメッセージは24時間受け付けております。<br>
+
+
+                    東急田園都市線「藤が丘駅」徒歩２分。<br>
+                    駐車場一台(要予約)</p>
+      </div>
+    </section>
+
+    <!-- About & Actions -->
+    <section class="section" id="reserve">
+      <div class="grid-cta">
+        <a class="link-tile" href="https://beauty.hotpepper.jp/kr/slnH000329748/?cstt=1" target="_blank" rel="noopener">Web予約</a>
+        <a class="link-tile" href="Nail.html">ネイル　メニュー</a>
+        <a class="link-tile" href="esthe-menu.html">エステ　メニュー</a>
+        <a class="link-tile" href="personalcolor.html">パーマネントジュエリー　メニュー</a>
+      </div>
+      <div class="ig-row">
+        <a class="ig-btn" href="https://www.instagram.com/beauty_cuas/" target="_blank" rel="noopener">
+          <img class="ig-icon" src="image/Instagram_icon.jpg" alt="Instagram アイコン">
+          <span class="ig-label full">Instagram ネイル</span><span class="ig-label short">ネイル</span>
+        </a>
+        <a class="ig-btn" href="https://www.instagram.com/cuas_chie/?hl=ja" target="_blank" rel="noopener">
+          <img class="ig-icon" src="image/Instagram_icon.jpg" alt="Instagram アイコン">
+          <span class="ig-label full">Instagram エステ</span><span class="ig-label short">エステ</span>
+        </a>
+        <a class="ig-btn" href="https://www.instagram.com/cuas_tattoo/" target="_blank" rel="noopener">
+          <img class="ig-icon" src="image/Instagram_icon.jpg" alt="Instagram アイコン">
+          <span class="ig-label full">Instagram タトゥー</span><span class="ig-label short">タトゥー</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Shop Info -->
+    <section class="section" id="shop">
+      <h2>店舗情報</h2>
+      <div class="shop">
+        <dl>
+          <dt class="kv">shop</dt>
+          <dd>Beauty Salon Cuas（キュアス）</dd>
+          <dt class="kv">住所</dt>
+          <dd>横浜市青葉区藤が丘2−1−7　横山ビル 2F</dd>
+          <dt class="kv">最寄駅</dt>
+          <dd>東急田園都市線「藤が丘」駅より徒歩2分</dd>
+          <dt class="kv">ご予約電話</dt>
+          <dd><a href="tel:045-530-4891">045-530-4891</a></dd>
+          <dt class="kv">営業時間</dt>
+          <dd>ネイル 平日10:00–22:00／土曜10:00–17:00　<br>
+              エステ 平日10:00–21:00／土・祝10:00–17:00</dd>
+          <dt class="kv">定休日</dt>
+          <dd> 日曜・祝日/不定休</dd>
+          <dt class="kv">お支払い</dt>
+          <dd>現金・PayPay（エステは各種電子マネー・各種クレジット）</dd>
+        </dl>
+        <div>
+          <div class="map" aria-label="Google マップ">
+            <!-- 住所に合わせて src を差し替えてください -->
+            <iframe title="Google Map" src="https://www.google.com/maps?q=BeautySalon+Cuas+%E6%A8%AA%E6%B5%9C%E5%B8%82%E9%9D%92%E8%91%89%E5%8C%BA%E8%97%A4%E3%81%8C%E4%B8%982-1-7&output=embed" width="100%" height="300" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact strip -->
+    <section class="section" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center">
+      <a class="btn" href="tel:045-530-4891">電話予約 045-530-4891</a>
+      <a class="btn1" href="https://line.me/R/ti/p/@chk7634a" target="_blank" rel="noopener">LINE 友だち追加</a>
+      <a class="btn primary" href="https://beauty.hotpepper.jp/kr/slnH000329748/?cstt=1">Web予約へ</a>
+    </section>
+  </main>
+
+  <footer>
+    <small>© <span id="y"></span> Beauty Salon Cuas. All rights reserved.</small>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // ヘッダーメニューのトグル処理
+    (function(){
+      const btn = document.getElementById('headerMenuToggle');
+      const menu = document.getElementById('headerMenu');
+      if(!btn || !menu) return;
+      function openMenu(){
+        btn.setAttribute('aria-expanded','true');
+        menu.classList.add('open');
+        menu.setAttribute('aria-hidden','false');
+      }
+      function closeMenu(){
+        btn.setAttribute('aria-expanded','false');
+        menu.classList.remove('open');
+        menu.setAttribute('aria-hidden','true');
+      }
+      btn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        expanded ? closeMenu() : openMenu();
+      });
+      // メニュー外クリックで閉じる
+      document.addEventListener('click', (e)=>{
+        if(!menu.contains(e.target) && !btn.contains(e.target)) closeMenu();
+      });
+      // ESC で閉じる
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape') closeMenu();
+      });
+    })();
+  </script>
+</body>
+</html>
